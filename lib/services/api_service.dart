@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ApiService {
   static const String baseUrl = 'http://localhost:8080/api';
   static const String loginUrl = '/auth/login';
+  static const String logoutUrl = '/auth/logout';
   static late SharedPreferences prefs;
 
   static login(String id, String password) async {
@@ -24,7 +25,8 @@ class ApiService {
   }
 
   static logout() async {
-    prefs = await SharedPreferences.getInstance();
+    await get(Uri.parse('$baseUrl$logoutUrl'));
+    final prefs = await SharedPreferences.getInstance();
     prefs.remove('Session');
   }
 
