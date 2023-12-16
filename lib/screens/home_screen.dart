@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:soti/screens/login_screen.dart';
+import 'package:soti/services/api_service.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,6 +16,7 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
+                ApiService.logout();
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
@@ -39,7 +41,18 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Text('login'),
+      body: Row(
+        children: [
+          SizedBox(
+            width: 200,
+            height: 200,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: const Text('회원관리'),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

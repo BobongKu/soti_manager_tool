@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:soti/screens/home_screen.dart';
+import 'package:soti/services/api_service.dart';
 
 void showSnackBar(BuildContext context, Text text) {
   final snackBar = SnackBar(
@@ -19,27 +20,27 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final String id = 'admin';
-  final String password = 'admin';
   final _idTextEditController = TextEditingController();
   final _passwordTextEditController = TextEditingController();
 
-  login() {
-    if (_idTextEditController.text == id &&
-        _passwordTextEditController.text == password) {
-      return Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return const HomeScreen();
-          },
-        ),
-        (route) => false,
-      );
+  login() async {
+    if (await ApiService.login(
+        _idTextEditController.text, _passwordTextEditController.text)) {
+      if (context.mounted) {
+        return Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const HomeScreen();
+            },
+          ),
+          (route) => false,
+        );
+      }
     } else {
       _idTextEditController.clear();
       _passwordTextEditController.clear();
-      showSnackBar(context, const Text('Wrong'));
+      if (context.mounted) showSnackBar(context, const Text('Wrong'));
     }
   }
 
