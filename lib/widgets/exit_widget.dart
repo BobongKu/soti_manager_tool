@@ -10,6 +10,9 @@ class ExitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      style: const ButtonStyle(
+        backgroundColor: MaterialStatePropertyAll(Colors.black),
+      ),
       onPressed: () {
         showDialog(
           context: context,
@@ -17,7 +20,7 @@ class ExitButton extends StatelessWidget {
             return Dialog(
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Colors.green,
+                  color: Colors.black,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
                 width: 200,
@@ -33,7 +36,7 @@ class ExitButton extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.w700,
-                            color: Colors.red,
+                            color: Colors.white,
                           ),
                         ),
                         const SizedBox(
@@ -43,7 +46,10 @@ class ExitButton extends StatelessWidget {
                           onPressed: () {
                             exit(0);
                           },
-                          child: const Text('Yes'),
+                          child: const Text(
+                            'Yes',
+                            style: TextStyle(color: Colors.black),
+                          ),
                         )
                       ],
                     ),
@@ -54,7 +60,10 @@ class ExitButton extends StatelessWidget {
           },
         );
       },
-      child: const Text('X'),
+      child: const Text(
+        'X',
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 }

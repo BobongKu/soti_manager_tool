@@ -52,6 +52,7 @@ class ApiService {
     final response =
         await get(Uri.parse(baseUrl + memberUrl), headers: await header());
     if (response.body.contains('200')) {
+      print(response.body);
       return response.body;
     } else {
       return '';

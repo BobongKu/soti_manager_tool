@@ -1,24 +1,28 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:soti/screens/login_screen.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await windowManager.ensureInitialized();
+  if (Platform.isWindows) {
+    WidgetsFlutterBinding.ensureInitialized();
+    await windowManager.ensureInitialized();
 
-  WindowOptions windowOptions = const WindowOptions(
-    minimumSize: Size(1100, 700),
-    center: true,
-    backgroundColor: Colors.transparent,
-    skipTaskbar: false,
-    titleBarStyle: TitleBarStyle.hidden,
-    windowButtonVisibility: true,
-  );
-  windowManager.waitUntilReadyToShow(windowOptions, () async {
-    await windowManager.show();
-    await windowManager.focus();
-    await windowManager.setMinimumSize(const Size(1100, 700));
-  });
+    WindowOptions windowOptions = const WindowOptions(
+      minimumSize: Size(1100, 700),
+      center: true,
+      backgroundColor: Colors.transparent,
+      skipTaskbar: false,
+      titleBarStyle: TitleBarStyle.hidden,
+      windowButtonVisibility: true,
+    );
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+      await windowManager.setMinimumSize(const Size(1100, 700));
+    });
+  }
 
   runApp(const App());
 }

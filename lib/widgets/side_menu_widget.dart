@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soti/screens/approval_screen.dart';
+import 'package:soti/screens/new_member_screen.dart';
 import 'package:soti/screens/home_screen.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -16,7 +16,7 @@ class SideMenu extends StatelessWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blueGrey,
+              color: Colors.black,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -29,6 +29,7 @@ class SideMenu extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w600,
+                        color: Colors.white,
                       ),
                     ),
                   ],
@@ -40,7 +41,7 @@ class SideMenu extends StatelessWidget {
             children: [
               ListTile(
                 title: const Text(
-                  '회원 목록',
+                  '정규 회원',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
@@ -58,7 +59,7 @@ class SideMenu extends StatelessWidget {
               ),
               ListTile(
                 title: const Text(
-                  '가입 승인',
+                  '신규 회원',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
@@ -68,7 +69,7 @@ class SideMenu extends StatelessWidget {
                   Navigator.of(context).push(
                     PageRouteBuilder(
                       pageBuilder: (context, animation, secondaryAnimation) =>
-                          const ApprovalScreen(),
+                          NewMemberScreen(),
                       transitionDuration: Duration.zero,
                     ),
                   );
