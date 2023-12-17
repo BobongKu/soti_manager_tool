@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:soti/screens/home_screen.dart';
 import 'package:soti/services/api_service.dart';
+import 'package:soti/widgets/exit_widget.dart';
 
 void showSnackBar(BuildContext context, Text text) {
   final snackBar = SnackBar(
@@ -55,15 +54,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: () {
-                exit(0);
-              },
-              child: const Text('X'),
-            ),
+            padding: EdgeInsets.all(8.0),
+            child: ExitButton(),
           ),
         ],
       ),

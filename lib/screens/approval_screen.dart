@@ -4,8 +4,8 @@ import 'package:soti/services/api_service.dart';
 import 'package:soti/widgets/exit_widget.dart';
 import 'package:soti/widgets/side_menu_widget.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class ApprovalScreen extends StatelessWidget {
+  const ApprovalScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,10 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(),
+      body: const Text(
+        'hello',
+        style: TextStyle(fontSize: 222),
+      ),
     );
   }
 }

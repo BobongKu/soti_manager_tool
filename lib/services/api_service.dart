@@ -5,21 +5,27 @@ class ApiService {
   static const String baseUrl = 'http://localhost:8080/api';
   static const String loginUrl = '/auth/login';
   static const String logoutUrl = '/auth/logout';
+  static const String memberUrl = '/member/all';
   static late SharedPreferences prefs;
 
   static login(String id, String password) async {
-    final response = await post(
-      Uri.parse('$baseUrl$loginUrl'),
-      body: {
-        'email': id,
-        'password': password,
-      },
-    );
-    if (response.body.contains('200')) {
-      prefs = await SharedPreferences.getInstance();
-      prefs.setString('Session', sessionParse(response.headers));
-      return true;
-    } else {
+    try {
+      final response = await post(
+        Uri.parse('$baseUrl$loginUrl'),
+        body: {
+          'email': id,
+          'password': password,
+        },
+      );
+
+      if (response.body.contains('200')) {
+        prefs = await SharedPreferences.getInstance();
+        prefs.setString('Session', sessionParse(response.headers));
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
       return false;
     }
   }
@@ -42,15 +48,13 @@ class ApiService {
     return header;
   }
 
-  static test() async {
-    final response = await post(
-        Uri.parse('http://localhost:8080/api/promotional/'),
-        body: {'title': 'test', 'content': 'test'},
-        headers: await header());
+  static Future<String> test() async {
+    final response =
+        await get(Uri.parse(baseUrl + memberUrl), headers: await header());
     if (response.body.contains('200')) {
-      return true;
+      return response.body;
     } else {
-      return false;
+      return '';
     }
   }
 }
