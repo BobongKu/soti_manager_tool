@@ -36,12 +36,13 @@ class UserList extends StatelessWidget {
         for (var dataColumn in dataColumns)
           DataColumn(
             label: Expanded(
-                child: Center(
-              child: Text(
-                dataColumn,
-                textAlign: TextAlign.center,
+              child: Center(
+                child: Text(
+                  dataColumn,
+                  textAlign: TextAlign.center,
+                ),
               ),
-            )),
+            ),
           ),
       ],
       rows: [
