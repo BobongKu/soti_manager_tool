@@ -1,6 +1,6 @@
 # soti
 
-A new Flutter project.
+SOTI 동아리 회원 관리(회원정보 수정, 삭제)를 위한 Windows 친화적 프로그램
 
 ## Getting Started
 
