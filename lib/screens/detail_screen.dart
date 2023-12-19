@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:soti/screens/home_screen.dart';
 import 'package:soti/widgets/detailTextFields.dart';
 import 'package:soti/widgets/Role_widget.dart';
 
@@ -12,7 +11,7 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  final String name = '최보규';
+  final String name = '회원 수정';
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +83,15 @@ class _DetailScreenState extends State<DetailScreen> {
                                               height: 50,
                                             ),
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.pushAndRemoveUntil(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const HomeScreen(),
+                                                    ),
+                                                    (route) => false);
+                                              },
                                               child: const Text(
                                                 'Yes',
                                                 style: TextStyle(
@@ -149,7 +156,14 @@ class _DetailScreenState extends State<DetailScreen> {
                                               height: 50,
                                             ),
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.pushAndRemoveUntil(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const HomeScreen()),
+                                                    (route) => false);
+                                              },
                                               child: const Text(
                                                 'Yes',
                                                 style: TextStyle(

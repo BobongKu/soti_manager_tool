@@ -4,8 +4,10 @@ class CustomTextField extends StatefulWidget {
   const CustomTextField({
     super.key,
     required this.controller,
+    required this.labelText,
   });
   final TextEditingController controller;
+  final String labelText;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -16,22 +18,22 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.controller,
-      decoration: const InputDecoration(
-        border: OutlineInputBorder(),
-        focusedBorder: OutlineInputBorder(
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.green,
             width: 5.0,
           ),
         ),
-        labelText: 'Id',
-        labelStyle: TextStyle(
+        labelText: widget.labelText,
+        labelStyle: const TextStyle(
           fontWeight: FontWeight.w600,
           color: Colors.purple,
         ),
-        floatingLabelStyle: TextStyle(
+        floatingLabelStyle: const TextStyle(
           fontSize: 24,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
         ),
       ),
     );
